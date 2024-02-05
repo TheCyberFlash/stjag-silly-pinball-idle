@@ -9,6 +9,22 @@ class Game {
       dx: 2,
       dy: -2,
     };
+    this.paddle = {
+        width: 100,
+        height: 10,
+        x: this.canvas.width / 2 - 50,
+        y: this.canvas.height - 20,
+        speed: 5,
+    };
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+        this.paddle.x += this.paddle.speed;
+      }
+      if (e.key === 'ArrowLeft') {
+        this.paddle.x -= this.paddle.speed;
+      }
+    });
   }
 
   start() {
