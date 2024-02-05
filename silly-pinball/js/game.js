@@ -12,7 +12,20 @@ class Game {
   }
 
   start() {
-    this.ctx.fillStyle = "black";
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.draw();
+    this.update();
+  }
+
+  draw() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.drawBall();
+  }
+
+  drawBall() {
+    this.ctx.beginPath();
+    this.ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI * 2);
+    this.ctx.fillStyle = '#0095DD';
+    this.ctx.fill();
+    this.ctx.closePath();
   }
 }
