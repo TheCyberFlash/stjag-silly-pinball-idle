@@ -65,8 +65,28 @@ class Game {
         if (this.ball.y + this.ball.dy > this.canvas.height - this.ball.radius || this.ball.y + this.ball.dy < this.ball.radius) {
         this.ball.dy = -this.ball.dy;
         }
+
+        if (
+            this.ball.y + this.ball.dy > this.canvas.height - this.ball.radius - this.paddle.height &&
+            this.ball.x > this.paddle.x &&
+            this.ball.x < this.paddle.x + this.paddle.width
+          ) {
+            this.ball.dy = -this.ball.dy;
+          }
     
         this.draw();
         requestAnimationFrame(this.update.bind(this));
     }
+
+    launchBall() {
+        if (this.ball.dy === 0) {
+            this.ball.dy = -2;
+        }
+    }
+
+  handleKeyPress(event) {
+    if (event.key === ' ' || event.key === 'Spacebar') {
+      this.launchBall();
+    }
+  }
 }
