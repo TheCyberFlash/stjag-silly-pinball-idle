@@ -35,6 +35,7 @@ class Game {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawBall();
+    this.drawPaddle();
   }
 
   drawBall() {
@@ -44,6 +45,14 @@ class Game {
     this.ctx.fill();
     this.ctx.closePath();
   }
+
+  drawPaddle() {
+    this.ctx.beginPath();
+    this.ctx.rect(this.paddle.x, this.paddle.y, this.paddle.width, this.paddle.height);
+    this.ctx.fillStyle = '#0095DD';
+    this.ctx.fill();
+    this.ctx.closePath();
+    }
 
     update() {
         this.ball.x += this.ball.dx;
