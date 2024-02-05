@@ -28,4 +28,20 @@ class Game {
     this.ctx.fill();
     this.ctx.closePath();
   }
+
+    update() {
+        this.ball.x += this.ball.dx;
+        this.ball.y += this.ball.dy;
+    
+        if (this.ball.x + this.ball.dx > this.canvas.width - this.ball.radius || this.ball.x + this.ball.dx < this.ball.radius) {
+        this.ball.dx = -this.ball.dx;
+        }
+    
+        if (this.ball.y + this.ball.dy > this.canvas.height - this.ball.radius || this.ball.y + this.ball.dy < this.ball.radius) {
+        this.ball.dy = -this.ball.dy;
+        }
+    
+        this.draw();
+        requestAnimationFrame(this.update.bind(this));
+    }
 }
